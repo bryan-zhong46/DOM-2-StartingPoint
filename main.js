@@ -87,6 +87,29 @@ function clearGrid() {
   const td = document.getElementsByTagName("td");
 
   for (let i = 0; i < td.length; i++) {
-    td[i].style.backgroundColor = "white";
+    td[i].style.backgroundColor = "";
   }
 }
+
+// click and hold to color the cells
+let isMouseDown = false;
+  root.addEventListener("mousedown", (event) => {
+    if (event.target.tagName.toLowerCase() === "td") {
+      isMouseDown = true;
+      const color = document.getElementById("color-select");
+      const selected = color.value;
+      event.target.style.backgroundColor = selected;
+    }
+  });
+
+root.addEventListener("mouseover", (event) => {
+  if (isMouseDown && event.target.tagName.toLowerCase() === "td") {
+    const color = document.getElementById("color-select");
+    const selected = color.value;
+    event.target.style.backgroundColor = selected;
+  }
+  });
+
+  root.addEventListener("mouseup", () => {
+    isMouseDown = false;
+  });
