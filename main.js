@@ -11,7 +11,6 @@ addRowFeature.onclick = function () {
   tbody.appendChild(tr);
 };
 
-
 // Add-columns feature
 addColFeature.onclick = function () {
   for (let row of tbody.rows) {
@@ -19,13 +18,13 @@ addColFeature.onclick = function () {
   }
 };
 
-
 // Remove-rows feature
 removeRowFeature.onclick = function () {
   if (tbody.rows.length > 0) {
     tbody.removeChild(tbody.rows[tbody.rows.length - 1]);
   }
 };
+
 //change color
 const root = document.getElementById("root");
 root.addEventListener("click", (event) => {
@@ -37,7 +36,9 @@ root.addEventListener("click", (event) => {
     const selected = color.value;
     event.target.style.backgroundColor = selected;
   }
-  const uncoloredButton = document.getElementById("fill-uncolored grid"); //fill uncolored grid
+  
+  //fill uncolored grid
+  const uncoloredButton = document.getElementById("fill-uncolored grid"); 
   uncoloredButton.addEventListener("click", () => {
     allTD = document.querySelectorAll('td');
     allTD.forEach(td => {
@@ -47,7 +48,9 @@ root.addEventListener("click", (event) => {
       }
     });
   });
-  const fillButton = document.getElementById("fill-grid");//fill grid
+  
+  //fill grid
+  const fillButton = document.getElementById("fill-grid");
   fillButton.addEventListener("click", () => {
     allTD = document.querySelectorAll('td');
     allTD.forEach(td => {
@@ -73,3 +76,17 @@ removeColButton.addEventListener("click", (event) => {
   }
 
 });
+
+// clear grid
+const clearButton = document.getElementById("clear-grid");
+clearButton.addEventListener("click", (event) => {
+  clearGrid();
+});
+
+function clearGrid() {
+  const td = document.getElementsByTagName("td");
+
+  for (let i = 0; i < td.length; i++) {
+    td[i].style.backgroundColor = "white";
+  }
+}
