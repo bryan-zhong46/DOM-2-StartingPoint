@@ -1,8 +1,9 @@
-// Add row feature
 const addRowFeature = document.getElementById("add-row");
 const addColFeature = document.getElementById("add-column")
+const removeRowFeature = document.getElementById("remove-row")
 const tbody = document.querySelector("table tbody");
 
+// Add row feature
 addRowFeature.onclick = function () {
   const cols = tbody.rows[0].cells.length;
   const tr = document.createElement("tr");
@@ -18,6 +19,13 @@ addColFeature.onclick = function () {
   }
 };
 
+
+// Remove-rows feature
+removeRowFeature.onclick = function () {
+  if (tbody.rows.length > 0) {
+    tbody.removeChild(tbody.rows[tbody.rows.length - 1]);
+  }
+};
 //change color
 const root = document.getElementById("root");
 root.addEventListener("click", (event) => {
